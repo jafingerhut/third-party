@@ -82,3 +82,11 @@ jobs:
         file: Dockerfile.20
         push: true
         tags: p4lang/third-party:${{ steps.get-tag.outputs.tag }}-20
+    - name: Build and push Dockerfile.ubuntu26 image if needed
+      if: ${{ github.repository == 'p4lang/third-party' && github.ref_name == 'main' && github.event_name != 'pull_request' }}
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: Dockerfile.ubuntu26
+        push: true
+        tags: p4lang/third-party:${{ steps.get-tag.outputs.tag }}-ubuntu26
