@@ -94,16 +94,6 @@ COPY ./nanomsg /nanomsg/
 COPY ./patches /patches/
 WORKDIR /nanomsg
 RUN apt-get install -qq --no-install-recommends patch && \
-    echo "------------------------------------" && \
-    echo "ls -la /" && \
-    ls -la / && \
-    echo "------------------------------------" && \
-    echo "ls -la /patches" && \
-    ls -la /patches && \
-    echo "------------------------------------" && \
-    echo "ls -la /nanomsg" && \
-    ls -la /nanomsg && \
-    echo "------------------------------------" && \
     patch -p1 < /patches/nanomsg-1.0.0-bump-minimum-cmake-version.patch && \
     mkdir -p /nanomsg/build
 WORKDIR /nanomsg/build
